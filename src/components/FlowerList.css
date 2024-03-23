@@ -6,4 +6,49 @@
     background-color: #ffffff;
     padding: 16px;
     border-radius: 16px;
+    width: 500px;
+}
+.FlowerList ol {
+    margin: 0;
+    padding-left: 2em;
+}
+
+.FlowerList ol li {
+    clear: both;
+    margin-bottom: 28px;
+}
+
+.FlowerList ol li span{
+    float: left;
+    font-size: 16px;
+    position: relative;
+}
+
+.FlowerList ol li span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transition: width 0.2s ease-in-out;
+    width: 0%;
+    height: 3px;
+    background-color: #524FA1;
+}
+
+.FlowerList ol li.completed span::after {
+    width: 100%;
+}
+
+.FlowerList ol li button {
+    float: right;
+    margin-left: 4px;
+    cursor: pointer;
+    border: none;
+    color: #ffffff;
+    background-color: #342cc4;
+    padding: 4px 8px;
+}
+
+.FlowerList ol li button.remove {
+    background-color: #d31c2a;
 }
