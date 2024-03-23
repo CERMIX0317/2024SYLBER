@@ -10,10 +10,6 @@ function App() {
 
   return (
     <div className="App">
-      <Button size='small' color='green'>
-        <Icon name='download' />
-        Download
-      </Button>
       <FlowerList flowers = {flowers} />
     </div>
   );
