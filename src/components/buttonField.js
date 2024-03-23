@@ -1,29 +1,47 @@
-import React, { useState, useMemo , useCallback} from 'react';
-const buttons = [{xPos: 0, yPos: 0}];
-const x = [0, 1, 2, 3, 4];
-const y = [0, 1, 2, 3, 4];
+import React, { useState, useMemo, useCallback } from 'react';
+
 const ButtonField = () => {
+    // 버튼들의 위치를 저장하는 상태
+    const [buttons, setButtons] = useState(
+        Array.from({ length: 25 }, (_, index) => ({
+            xPos: (index % 5) * 100,
+            yPos: Math.floor(index / 5) * 100,
+        }))
+    );
+
+    // 버튼의 위치를 업데이트하는 함수
+    const updateButtonPosition = useCallback(() => {
+        setButtons(prevButtons =>
+            prevButtons.map((button, index) => ({
+                xPos: (index % 5) * 100,
+                yPos: Math.floor(index / 5) * 100,
+            }))
+        );
+    }, []);
+
+    // 컴포넌트가 마운트될 때 한 번만 버튼 위치를 업데이트
+    useMemo(() => {
+        updateButtonPosition();
+    }, [updateButtonPosition]);
+
     return (
         <div className="buttonField">
-            {x.map((xPos, index) => {
-                return (
-                    <div>
-                        {y.map((yPos, index) => {
-                            return (
-                                <button style={{
-                                    position: 'absolute',
-                                    left: 100 * xPos,
-                                    top: 100 * yPos,
-                                    width: 100,
-                                    height: 100
-                                }}></button>
-                            );
-                        })}
-                    </div>
-                );
-            })}
+            {buttons.map((button, index) => (
+                <button
+                    key={index}
+                    style={{
+                        position: 'absolute',
+                        left: button.xPos,
+                        top: button.yPos,
+                        width: 100,
+                        height: 100,
+                    }}
+                >
+                    {index}
+                </button>
+            ))}
         </div>
     );
-}
+};
 
 export default ButtonField;
