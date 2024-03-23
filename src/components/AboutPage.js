@@ -24,7 +24,7 @@ export default class AccordionExampleStyled extends Component {
 
         return (
             <div>
-                <HeaderExampleUsersIcon username="SJB"/>
+                <HeaderExampleUsersIcon username="유저"/>
                 <br/>
                 <h1 style={{textAlign: 'center', font: '30px Century Gothic', padding: 20,}}>Questions About Hello
                     Garden!</h1>

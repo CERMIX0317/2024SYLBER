@@ -10,11 +10,15 @@ const MenuExampleText = ({username}) => {
     const navigateToFriends = (username) => {
         navigate(`/${username}/friends`);
     };
+    const navigateToAbout = () => {
+        navigate(`/about`);
+    };
 
     return (
         <Menu vertical fixed="right"> {/* fixed="right" 추가 */}
             <MenuItem
                 name='About'
+                onClick={() => {navigateToAbout()}}
             >
                 <Header as='h4'>About</Header>
                 <p>About out service!</p>
