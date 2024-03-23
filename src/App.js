@@ -3,6 +3,8 @@ import InsertForm from "./components/InsertForm";
 import ListView from "./components/ListView";
 import {Button, Icon} from 'semantic-ui-react'
 
+
+
 function App() {
   const [todoList, setTodoList] = useState([]);
   const isLimitReached = useMemo(() => {return todoList.length >= 10;},[todoList]);
