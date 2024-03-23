@@ -10,7 +10,7 @@ const HeaderExampleUsersIcon = ({username}) => (
             padding: 10,
         }}>
             <span>{username}님 환영합니다! </span>
-            <Icon name='smile outline' circular verticalAlign='top'/> {/* verticalAlign='top' 추가 */}
+            <Icon name='log out' circular verticalAlign='top'/> {/* verticalAlign='top' 추가 */}
             <h1  style={{textAlign: 'center',
                 font: '48px Century Gothic',
                 padding: 20,}}>
