@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback } from 'react';
+import React, { useState, useMemo, useCallback, MenuItem, Header, activeItem, Menu } from 'react';
 import CHBImg from './image/CHB.png';
 import HYDImg from './image/HYD.png';
 import IRISImg from './image/IRIS.png';
@@ -66,7 +66,7 @@ const ButtonField = ({seedPos, username}) => {
                 <div
                     key={index}
                     style={{
-                        font: 'bold 20px Arial',
+                        font: '20px Century Gothic',
                         background: button.BGC,
                         position: 'absolute',
                         left: (button.xPos + seedPos.seedX - 250),
@@ -80,15 +80,15 @@ const ButtonField = ({seedPos, username}) => {
                         setShowFlowerInfo((showFlowerInfo) => (showFlowerInfo === index ? -1 : index));
                     }}
                 >
-                    {index}
-                    <img src = {IRISImg}  style = {{ width: 100 }}/>
+                    {index + 1}
+                    <img src = {HYDImg}  style = {{ width: 100 }}/>
                 </div>
             ))}
             {showFlowerInfo >= 0 && (
-                <Card style = {{ width: 250, left: seedPos.seedX + 300, top: seedPos.seedY - 150}}>
-                    <Image src={IRISImg} wrapped ui={false} />
+                <Card style = {{ width: 250, left: seedPos.seedX -  window.innerWidth/3, top: seedPos.seedY - 150}}>
+                    <Image src={HYDImg} wrapped ui={false} />
                     <CardContent>
-                        <CardHeader>{username}님의 IRIS</CardHeader>
+                        <CardHeader>{username}님의 HYD</CardHeader>
                         <CardMeta>
                             <span className='date'>YJB가 2024.03.17에 선물했어요!</span>
                         </CardMeta>
@@ -98,12 +98,21 @@ const ButtonField = ({seedPos, username}) => {
                     </CardContent>
                     <CardContent extra>
                         <a>
-                            <Icon name='user' />
+                            <Icon name='percent' />
                             성장 진척도: 98%
                         </a>
                     </CardContent>
                 </Card>
             )}
+            {showFlowerInfo < 0 && ( <Card style = {{ width: 250, left: seedPos.seedX -  window.innerWidth/3, top: seedPos.seedY - 150}}>
+                    <CardContent>
+                        <CardDescription>
+                            빈칸을 선택하여 꽃을 심거나 <br/> 꽃을 선택하여 정보를 확인하세요!
+                        </CardDescription>
+                    </CardContent>
+                </Card>
+            )
+        }
         </div>
     );
 };
