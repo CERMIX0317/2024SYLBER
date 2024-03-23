@@ -11,7 +11,7 @@ function MainScreen({user}) {
   return (
     <div className="App">
         <HeaderExampleUsersIcon username = {user}/>
-        <MenuExampleText/>
+        <MenuExampleText username = {user}/>
       <ButtonField seedPos = {seedPos} username = {user}/>
     </div>
   );
