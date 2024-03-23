@@ -12,30 +12,30 @@ export default class MenuExampleText extends Component {
         return (
             <Menu vertical fixed="right"> {/* fixed="right" 추가 */}
                 <MenuItem
-                    name='promotions'
-                    active={activeItem === 'promotions'}
+                    name='About'
+                    active={activeItem === 'About'}
                     onClick={this.handleItemClick}
                 >
-                    <Header as='h4'>Promotions</Header>
-                    <p>Check out our new promotions</p>
+                    <Header as='h4'>About</Header>
+                    <p>About out service!</p>
                 </MenuItem>
 
                 <MenuItem
-                    name='coupons'
-                    active={activeItem === 'coupons'}
+                    name='Friends'
+                    active={activeItem === 'Friends'}
                     onClick={this.handleItemClick}
                 >
-                    <Header as='h4'>Coupons</Header>
-                    <p>Check out our collection of coupons</p>
+                    <Header as='h4'>Friends</Header>
+                    <p>Check out the garden of your friends!</p>
                 </MenuItem>
 
                 <MenuItem
-                    name='rebates'
-                    active={activeItem === 'rebates'}
+                    name='Postbox'
+                    active={activeItem === 'Postbox'}
                     onClick={this.handleItemClick}
                 >
-                    <Header as='h4'>Rebates</Header>
-                    <p>Visit our rebate forum for information on claiming rebates</p>
+                    <Header as='h4'>Postbox</Header>
+                    <p>Check out new updates!</p>
                 </MenuItem>
             </Menu>
         )
