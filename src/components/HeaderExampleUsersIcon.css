@@ -1,0 +1,29 @@
+.custom-header-container {
+    border-radius: 10px;
+    background-color: #e5e5e5;
+    padding: 20px;
+    text-align: left;
+    transition: background-color 0.3s ease; /* Add transition for smooth hover effect */
+  }
+  
+  .custom-header-container:hover {
+    background-color: #d9d9d9; /* Change background color on hover */
+  }
+  
+  .welcome-message {
+    font-family: 'Montserrat', sans-serif; /* Apply Google Font */
+    font-size: 18px;
+    padding: 10px;
+  }
+  
+  .header-text {
+    font-family: 'Poppins', sans-serif; /* Apply Google Font */
+    font-size: 48px;
+    padding: 20px;
+  }
+  
+  .header-text:hover {
+    transform: scale(1.2);
+    color: #000000; /* Change text color on hover */
+  }
+  
