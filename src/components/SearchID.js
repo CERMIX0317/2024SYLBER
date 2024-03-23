@@ -1,5 +1,7 @@
 import React, { useState, useMemo , useCallback} from 'react';
 import "./SearchID.css";
+import {getUserApi, getAllUserApi} from '../apis/usersApi';
+
 import {Input, 
   List, 
   ListItem,  
@@ -11,17 +13,22 @@ import {Input,
   Button} from 'semantic-ui-react';
 import axios from 'axios';
 
-const users = [{username: 'sjb', password: '1234'}, {username: 'yjb', password: '4321'}, ];
 const backurl = 'http://3.92.72.2:3000';
 
-function searchID() {
+function SearchID({username}) {
+  const [users, setUsers] = useState([]);
+
+  getAllUserApi().then((res) => {
+    setUsers([...res]);
+  })  
+
   const [searchTerm, setSearchTerm] = useState('');
   
   const handleSearch = (e) => {
     setSearchTerm(e.target.value.toString());
   };
   const filteredUsers = searchTerm ? users.filter(user =>
-    user.username.toLowerCase().includes(searchTerm)
+    user.id.toLowerCase().includes(searchTerm)
   ) : [];
 
   const handleButtonClick = async(username) => {
@@ -57,7 +64,7 @@ function searchID() {
                   <ListItem>
                     <ListIcon name='heart' size='large' verticalAlign='middle' />
                     <ListContent>
-                      <strong>{users.username}</strong>
+                      <strong>{users.id}</strong>
                       &emsp;
                       <Button as='a' onClick={()=>handleButtonClick(users.username)}>놀러가기!</Button>
                     </ListContent>
@@ -77,4 +84,4 @@ function searchID() {
   );
 }
 
-export default searchID;
+export default SearchID;

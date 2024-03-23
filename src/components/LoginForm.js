@@ -17,7 +17,7 @@ function LoginForm() {
   };
 
   const navigateToMain = (username) => {
-    navigate(`/main/${username}`);
+    navigate(`${username}/main`);
   };
 
   const handleLogin = useCallback((event) => {
