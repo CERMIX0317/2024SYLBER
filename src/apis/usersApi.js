@@ -1,13 +1,14 @@
 import axios from 'axios';
 
-const baseUrl = "3.92.72.2:3000"
+const baseUrl = "http://3.92.72.2:3000"
+const apiUrl = "/user"
+
+export const getAllUserApi = async () => {
+    const {data} = await axios.get(`${baseUrl}${apiUrl}`).catch((error) => {throw error;});
+    return data;
+};
 
 export const getUserApi = async (username) => {
-    try {
-      const { data } = axios.get(`http://${baseUrl}/user/sjb`);
-      console.log(data);
-      return data;
-    } catch (error) {
-      throw error;
-    }
-  };
+    const {data} = await axios.get(`${baseUrl}${apiUrl}/${username}`).catch((error) => {throw error;});
+    return data;
+};
