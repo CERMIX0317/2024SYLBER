@@ -17,6 +17,7 @@ const FlowerList = ({flowers, onComplete, onRemove}) => {
                 {flowers.map((flower, index) => {
                     return (
                         <ListItem>
+                            <br/>
                             <ListContent floated="right">
                                 <Button onClick={() => {
                                     if (typeof onComplete === "function") {
@@ -35,7 +36,7 @@ const FlowerList = ({flowers, onComplete, onRemove}) => {
                                 <ListHeader as='b' className="Header">{flower.message}</ListHeader>
                                 <ListDescription>Sent by <b>  {flower.sender} </b> </ListDescription>
                             </ListContent>
-                            
+                            <br/>
                         </ListItem>
                     )
                 })}
