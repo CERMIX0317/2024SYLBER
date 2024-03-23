@@ -11,7 +11,7 @@ function LoginForm({users}) {
   const handleLogin = useCallback((event) => {
     event.preventDefault(); // 기본적인 HTML 동작으로 인해 페이지가 새로고침 되는 것을 방지
     if(users.find((element) => {return (element.username == info.username && element.password == info.password);})) {
-      setLoginSuccess(!loginSuccess);
+      setLoginSuccess(true);
     } else {
       alert('나가');
     }
@@ -20,7 +20,7 @@ function LoginForm({users}) {
   },[id, password])
 
   return (
-    <div>
+    <div style = {{textAlign: 'center', verticalAlign: 'center',}}>
       <h1> 로그인해주세요.</h1>
       <form onSubmit={handleLogin}>
         <Input value = {id} placeholder = 'id' onChange = {(event) => {
