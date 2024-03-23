@@ -1,9 +1,12 @@
 import React, { useState, useMemo, useCallback, MenuItem, Header, activeItem, Menu } from 'react';
-import CHBImg from './image/CHB.png';
-import HYDImg from './image/HYD.png';
-import IRISImg from './image/IRIS.png';
-import TULIPImg from './image/TULIP.png';
-import LGBImg from './image/LGB.png';
+import {
+    CHBImg,
+    HYDImg,
+    IRISImg,
+    TULIPImg,
+    LGBImg
+  } from './image/images'
+
 import {
     CardMeta,
     CardHeader,
@@ -82,12 +85,12 @@ const ButtonField = ({seedPos, username}) => {
                     }}
                 >
                     {index + 1}
-                    <img src = {HYDImg}  style = {{ width: 100 }}/>
+                    <img src = {CHBImg}  style = {{ width: 100 }}/>
                 </div>
             ))}
             {showFlowerInfo >= 0 && (
                 <Card style = {{ width: 250, left: seedPos.seedX -  window.innerWidth/3, top: seedPos.seedY - 250}}>
-                    <Image src={HYDImg} wrapped ui={false} />
+                    <Image src={CHBImg} wrapped ui={false} />
                     <CardContent>
                         <CardHeader>{username}님의 HYD</CardHeader>
                         <CardMeta>
