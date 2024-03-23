@@ -23,9 +23,9 @@ function LoginForm({users}) {
     <div style = {{textAlign: 'center', verticalAlign: 'center',}}>
       <h1> 로그인해주세요.</h1>
       <form onSubmit={handleLogin}>
-        <Input value = {id} placeholder = 'id' onChange = {(event) => {
+        <input value = {id} placeholder = 'id' onChange = {(event) => {
           setId(event.target.value);
-        }}></Input>
+        }}></input>
         <Input value = {password} placeholder = 'password' onChange = {(event) => {
           setPassword(event.target.value);
         }}></Input>
