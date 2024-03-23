@@ -12,17 +12,14 @@ import {
 const FlowerList = ({flowers, onComplete, onRemove}) => {
     return (
         <div className="FlowerList">
+            <Button>수령</Button>
             <List divided verticalAlign='middle'>
 
                 {flowers.map((flower, index) => {
                     return(
                         <ListItem>
-                            <ListContent>
-                                <ListHeader as='b' className="Header">{flower.message}</ListHeader>
-                                <ListDescription>Sent by <b>  {flower.sender} </b> </ListDescription>
-                            </ListContent>
                             <ListContent floated="right">
-                                <Button type="button" onClick={() => {
+                                <Button onClick={() => {
                                     if (typeof onComplete === "function") {
                                         onComplete(index);
                                     }
@@ -34,8 +31,12 @@ const FlowerList = ({flowers, onComplete, onRemove}) => {
                                     }
                                 }}>제거
                                 </Button>
-                                <br/>
                             </ListContent>
+                            <ListContent>
+                                <ListHeader as='b' className="Header">{flower.message}</ListHeader>
+                                <ListDescription>Sent by <b>  {flower.sender} </b> </ListDescription>
+                            </ListContent>
+                            
                         </ListItem>
                     )
                 })}
