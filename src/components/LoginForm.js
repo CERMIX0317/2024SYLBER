@@ -1,5 +1,6 @@
 import React, { useState, useMemo , useCallback} from 'react';
 import {Input, Button} from 'semantic-ui-react';
+import {getUserApi, getAllUserApi} from '../apis/usersApi';
 
 function LoginForm({users}) {
   
@@ -10,11 +11,17 @@ function LoginForm({users}) {
 
   const handleLogin = useCallback((event) => {
     event.preventDefault(); // 기본적인 HTML 동작으로 인해 페이지가 새로고침 되는 것을 방지
-    if(users.find((element) => {return (element.username == info.username && element.password == info.password);})) {
-      setLoginSuccess(true);
-    } else {
-      alert('나가');
-    }
+    getUserApi(id).then((res) => {
+      const {pw} = res;
+      if(pw === password){
+        setLoginSuccess(true);
+      } else{
+        alert('비밀번호가 틀렸습니다.');
+      }
+    }).catch((err) => {
+      alert('존재하지 않는 유저네임입니다.');
+      console.error(err);
+    });
     setId("");
     setPassword("");
   },[id, password])
