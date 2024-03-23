@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useCallback } from 'react';
 
-const ButtonField = () => {
+const ButtonField = ({seedPos}) => {
     // 버튼들의 위치를 저장하는 상태
     const [buttons, setButtons] = useState(
         Array.from({ length: 25 }, (_, index) => ({
@@ -19,6 +19,23 @@ const ButtonField = () => {
         );
     }, []);
 
+    const componentToHex = (c) => {
+        var hex = c.toString(16);
+        return hex.length == 1 ? "0" + hex : hex;
+    }
+
+    const randomGreenColor = () => {
+        // 초록색의 RGB 범위: (0, 128, 0)에서 (0, 255, 0)
+        var red = 0;
+        var green = Math.floor(Math.random() * (255 - 128 + 1)) + 128;
+        var blue = 0;
+
+        // RGB 값을 헥스 코드로 변환
+        var hexColor = "#" + componentToHex(red) + componentToHex(green) + componentToHex(blue);
+
+        return hexColor;
+    }
+
     // 컴포넌트가 마운트될 때 한 번만 버튼 위치를 업데이트
     useMemo(() => {
         updateButtonPosition();
@@ -30,9 +47,10 @@ const ButtonField = () => {
                 <button
                     key={index}
                     style={{
+                        background: randomGreenColor(),
                         position: 'absolute',
-                        left: button.xPos,
-                        top: button.yPos,
+                        left: button.xPos + seedPos.seedX - 250,
+                        top: button.yPos + seedPos.seedY - 250,
                         width: 100,
                         height: 100,
                     }}
