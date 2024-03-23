@@ -64,7 +64,7 @@ function SearchID({username}) {
                   <ListItem>
                     <ListIcon name='heart' size='large' verticalAlign='middle' />
                     <ListContent>
-                      <strong>{users.username}</strong>
+                      <strong>{users.id}</strong>
                       &emsp;
                       <Button as='a' onClick={()=>handleButtonClick(users.username)}>놀러가기!</Button>
                     </ListContent>

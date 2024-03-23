@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import FlowerList from './components/FlowerList'
+import FlowerList from './FlowerList'
 import {Input, Button, Icon} from 'semantic-ui-react';
 import ButtonField from './buttonField'
 import MenuExampleText from './MenuView'
@@ -17,4 +17,4 @@ function MainScreen({user}) {
   );
 }
 
-export default App;
+export default MainScreen;
