@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
     SidebarPusher,
     SidebarPushable,
@@ -9,7 +9,7 @@ import {
     Menu,
     Segment,
     Sidebar,
-} from 'semantic-ui-react'
+} from 'semantic-ui-react';
 
 const SidebarExampleVisible = () => (
     <SidebarPushable as={Segment}>
@@ -45,4 +45,4 @@ const SidebarExampleVisible = () => (
     </SidebarPushable>
 )
 
-export default SidebarExampleVisible
+export default SidebarExampleVisible;
