@@ -85,7 +85,7 @@ const ButtonField = ({seedPos, username}) => {
                 </div>
             ))}
             {showFlowerInfo >= 0 && (
-                <Card style = {{ width: 250, left: seedPos.seedX -  window.innerWidth/3, top: seedPos.seedY - 150}}>
+                <Card style = {{ width: 250, left: seedPos.seedX -  window.innerWidth/3, top: seedPos.seedY - 250}}>
                     <Image src={HYDImg} wrapped ui={false} />
                     <CardContent>
                         <CardHeader>{username}님의 HYD</CardHeader>
@@ -104,7 +104,7 @@ const ButtonField = ({seedPos, username}) => {
                     </CardContent>
                 </Card>
             )}
-            {showFlowerInfo < 0 && ( <Card style = {{ width: 250, left: seedPos.seedX -  window.innerWidth/3, top: seedPos.seedY - 150}}>
+            {showFlowerInfo < 0 && ( <Card style = {{ width: 250, left: seedPos.seedX -  window.innerWidth/3, top: seedPos.seedY - 250}}>
                     <CardContent>
                         <CardDescription>
                             빈칸을 선택하여 꽃을 심거나 <br/> 꽃을 선택하여 정보를 확인하세요!
