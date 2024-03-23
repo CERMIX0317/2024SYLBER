@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import InsertForm from "./components/InsertForm";
 import ListView from "./components/ListView";
+import {Button, Icon} from 'semantic-ui-react'
 
 function App() {
   const [todoList, setTodoList] = useState([]);
@@ -35,6 +36,10 @@ function App() {
   
   return (
     <div className="App">
+        <Button size='small' color='green'>
+          <Icon name='download' />
+          Download
+        </Button>
         <ListView todoList={todoList} onComplete={handleComplete} onRemove={handleRemove} />      
         {isLimitReached && <div style={{
             padding: "8px 16px",
