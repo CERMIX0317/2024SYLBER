@@ -1,7 +1,8 @@
 import React, { useState, useMemo , useCallback} from 'react';
 import {Input, Button, FormCheckbox} from 'semantic-ui-react';
+import {getUserApi, getAllUserApi, postUserApi} from '../apis/usersApi';
 
-function SignUpForm({users}) {
+function SignUpForm() {
 
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
@@ -17,16 +18,21 @@ function SignUpForm({users}) {
 
   const handleLogin = useCallback((event) => {
     event.preventDefault(); // 기본적인 HTML 동작으로 인해 페이지가 새로고침 되는 것을 방지
-    console.log(check);
-    if(!check) {
-      alert('약관 동의를 해주세요');
-    } else if(password.length<8) {
-      alert('비밀번호는 8자리 이상이어야 합니다');
-    } else if((users.find((element) => {return (element.username == info.username);}))) {
-      alert('이미 존재하는 아이디입니다');
-    } else {
-      setSignUpSuccess(true);
-    }
+    getUserApi(id).then((res) => {
+      alert('이미 존재하는 아이디입니다.');
+    }).catch((err) => {
+      if(password.length<8) {
+        alert('비밀번호는 8자리 이상이어야 합니다');
+      } else if(!check) {
+        alert('약관 동의를 해주세요');
+      } else {
+        setSignUpSuccess(true);
+        postUserApi(id, password)
+        .catch((err) => {
+          console.error(err);
+        });
+      }
+    });
     setId("");
     setPassword("");
   },[id, password, check])
@@ -51,9 +57,8 @@ function SignUpForm({users}) {
         />
         <br/>
         <Button type="submit">Sign up</Button>
-        <div>{check ? 'yes' : 'no'}</div>
       </form>
-      {(signUpSuccess) && (alert('성공!'))}
+      {(signUpSuccess) && (alert('회원가입이 완료되었습니다.'))}
     </div>
   );
 }
