@@ -13,6 +13,9 @@ const MenuExampleText = ({username}) => {
     const navigateToAbout = () => {
         navigate(`/about`);
     };
+    const navigateToGive = (username) => {
+        navigate(`/${username}/giveflower`);
+    };
 
     return (
         <Menu vertical fixed="right"> {/* fixed="right" 추가 */}
@@ -33,10 +36,11 @@ const MenuExampleText = ({username}) => {
             </MenuItem>
 
             <MenuItem
-                name='Postbox'
+                name='Give Flowers'
+                onClick={() => {navigateToGive(username)}}
             >
-                <Header as='h4'>Postbox</Header>
-                <p>Check out new updates!</p>
+                <Header as='h4'>Give Flowers</Header>
+                <p>Send your flowers!</p>
             </MenuItem>
         </Menu>
     );

@@ -5,6 +5,7 @@ import SignUpForm from './SignUp'
 import MainScreen from './MainScreen'
 import SearchID from './SearchID'
 import AboutPage from './AboutPage'
+import GiveFlower from './GiveFlower'
 
 function PageRouter({users}) {
 
@@ -21,6 +22,10 @@ function PageRouter({users}) {
         {
             users.map(({id}) =>
                 <Route path = {`${id}/friends/`} element = {<SearchID user = {id}/>} />
+            )}   
+        {  
+            users.map(({id}) =>
+                <Route path = {`${id}/giveflower/`} element = {<GiveFlower myuser = {id}/>} />
             )}     
         
       </Routes>

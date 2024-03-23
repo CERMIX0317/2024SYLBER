@@ -28,7 +28,7 @@ function GiveFlower({myuser}) {
     setSearchTerm(e.target.value.toString());
   };
   const filteredUsers = searchTerm ? users.filter(user =>
-    user.username.toLowerCase().includes(searchTerm)
+    user.id.toLowerCase().includes(searchTerm)
   ) : [];
 
   const getFlowerList = async() =>{
@@ -67,7 +67,7 @@ function GiveFlower({myuser}) {
   const SideBarWithSearch = () => {
     // 검색 기능을 통해 리스트 아이템을 필터링합니다.
     const filteredListItems = users.filter(item =>
-      item.username.toLowerCase().includes(searchQuery.toLowerCase())
+      item.id.toLowerCase().includes(searchQuery.toLowerCase())
     );
     return (
         <Sidebar
@@ -89,8 +89,8 @@ function GiveFlower({myuser}) {
           </Menu.Item>
           {filteredListItems.map((item, index) => (
             <Menu.Item key={index}>
-                {item.username}
-                <Button onClick={()=>{giveflower(item.username, selectedItem);setVisible2(!visible2)}}>꽃 주기</Button>
+                {item.id}
+                <Button onClick={()=>{giveflower(item.id, selectedItem);setVisible2(!visible2)}}>꽃 주기</Button>
             </Menu.Item>
             ))}
         </Sidebar>
