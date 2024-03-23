@@ -10,6 +10,14 @@ import {
   } from './image/images'
 import {getUserApi, getAllUserApi} from '../apis/usersApi';
 
+const images = [CHBImg,
+    HYDImg,
+    IRISImg,
+    TULIPImg,
+    LGBImg,
+    LILYImg,
+    MYSImg];
+
 import {
     CardMeta,
     CardHeader,
@@ -24,13 +32,17 @@ import {
 const ButtonField = ({seedPos, username}) => {
     // 버튼들의 위치를 저장하는 상태
     const [flowers, setFlowers] = useState([]);
+    const [seeds, setSeeds] = useState([]);
 
     getUserApi(username).then((res) => {
         setFlowers(res.flowers);
+        setSeeds(res.seeds);
       }).catch((err) => {
         alert('존재하지 않는 유저네임입니다.');
         console.error(err);
     });
+
+    
 
     const [showFlowerInfo, setShowFlowerInfo] = useState(-1);
 
