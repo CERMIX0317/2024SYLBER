@@ -1,5 +1,6 @@
 import React, { useState, useMemo , useCallback} from 'react';
 import "./GiveFlower.css";
+import {getuserApi, getAllUserApi} from '../apis/usersApi';
 import {Input, 
   List, 
   ListItem,  
@@ -13,10 +14,13 @@ import {Input,
   Button} from 'semantic-ui-react';
 import axios from 'axios';
 
-const users = [{username: 'sjb', password: '1234'}, {username: 'yjb', password: '4321'}, ];
 const backurl = 'http://3.92.72.2:3000';
 
 function GiveFlower({myuser}) {
+  const [users, setUsers] = useState([]);
+  getAllUserApi().then((res)=>{
+    setUsers([...res]);
+  })
   const [searchTerm, setSearchTerm] = useState('');
   const [myFlowerList, setFlowerList] = useState([]);
   
@@ -40,7 +44,7 @@ function GiveFlower({myuser}) {
 
   const giveflower = async(username, type)=>{
     try{
-        const data = await axios.get(`${backurl}/user/${username}/FA/${type}`);
+        const data = await axios.get(`${backurl}/user/${username}/FA/${type}/-1`);
         console.log(data);
         alert('성공적으로 전달!');
     }catch(error){

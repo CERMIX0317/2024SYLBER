@@ -163,7 +163,9 @@ const ButtonField = ({seedPos, username}) => {
                         <CardDescription>
                             빈칸을 선택하여 꽃을 심거나 <br/> 꽃을 선택하여 정보를 확인하세요!
                             <br/><br/>
-                            <Button>씨앗 심기 (∞개 보유)</Button>
+                            <Button onClick = {() => {
+                                getUserApi(`${username}/sp`);
+                            }}>씨앗 심기 (∞개 보유)</Button>
                         </CardDescription>
                     </CardContent>
                 </Card>
