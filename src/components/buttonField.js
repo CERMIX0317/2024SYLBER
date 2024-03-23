@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useCallback } from 'react';
+import LGBImg from './image/LGB.png';
 
 const ButtonField = ({seedPos}) => {
     // 버튼들의 위치를 저장하는 상태
@@ -44,19 +45,27 @@ const ButtonField = ({seedPos}) => {
     return (
         <div className="buttonField">
             {buttons.map((button, index) => (
-                <button
+
+
+                <div
                     key={index}
                     style={{
+                        font: 'bold 20px Arial',
                         background: randomGreenColor(),
                         position: 'absolute',
                         left: button.xPos + seedPos.seedX - 250,
                         top: button.yPos + seedPos.seedY - 250,
                         width: 100,
                         height: 100,
+                        borderRadius: 10,
+                    }}
+                    onClick={() => {
+                        console.log({index});
                     }}
                 >
                     {index}
-                </button>
+                    <img src = {LGBImg}  style = {{ width: 100 }}/>
+                </div>
             ))}
         </div>
     );
