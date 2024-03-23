@@ -1,5 +1,5 @@
-import React, { useState, useMemo , useCallback} from 'react';
-import FlowerList from './FlowerList'
+import React, { useState, useEffect, useMemo } from 'react';
+import FlowerList from './components/FlowerList'
 import {Input, Button, Icon} from 'semantic-ui-react';
 import ButtonField from './buttonField'
 import MenuExampleText from './MenuView'
@@ -11,10 +11,10 @@ function MainScreen({user}) {
   return (
     <div className="App">
         <HeaderExampleUsersIcon username = {user}/>
-        <MenuExampleText username = {user}/>
+        <MenuExampleText/>
       <ButtonField seedPos = {seedPos} username = {user}/>
     </div>
   );
 }
 
-export default MainScreen;
+export default App;
