@@ -7,7 +7,6 @@ const users = [{username: 'SJB', password: '1234'}, {username: 'YJB', password: 
 const flowers = [{sender: 'SJB', flowername: 'tulip', message: 'Have a nice day!'}, {sender: 'YJB', flowername: 'ivy', message: 'Glory day'}, ];
 
 function App() {
-
   return (
     <div className="App">
       <FlowerList flowers = {flowers} />
