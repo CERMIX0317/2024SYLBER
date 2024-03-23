@@ -3,7 +3,6 @@ const buttons = [{xPos: 0, yPos: 0}];
 const x = [0, 1, 2, 3, 4];
 const y = [0, 1, 2, 3, 4];
 const ButtonField = () => {
-
     return (
         <div className="buttonField">
             {x.map((xPos, index) => {
