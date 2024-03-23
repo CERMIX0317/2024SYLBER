@@ -1,43 +1,41 @@
-import React, { Component } from 'react'
+import React, { Component, useCallback } from 'react'
 import { MenuItem, Header, Menu } from 'semantic-ui-react'
+import {useNavigate} from 'react-router-dom'
 
-export default class MenuExampleText extends Component {
-    state = {}
+const MenuExampleText = ({username}) => {
 
-    handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+    
+    const navigate = useNavigate();
+ 
+    const navigateToFriends = (username) => {
+        navigate(`/${username}/friends`);
+    };
 
-    render() {
-        const { activeItem } = this.state
+    return (
+        <Menu vertical fixed="right"> {/* fixed="right" 추가 */}
+            <MenuItem
+                name='About'
+            >
+                <Header as='h4'>About</Header>
+                <p>About out service!</p>
+            </MenuItem>
 
-        return (
-            <Menu vertical fixed="right"> {/* fixed="right" 추가 */}
-                <MenuItem
-                    name='About'
-                    active={activeItem === 'About'}
-                    onClick={this.handleItemClick}
-                >
-                    <Header as='h4'>About</Header>
-                    <p>About out service!</p>
-                </MenuItem>
+            <MenuItem
+                name='Friends'
+                onClick={() => {navigateToFriends(username)}}
+            >
+                <Header as='h4'>Friends</Header>
+                <p>Check out the garden of your friends!</p>
+            </MenuItem>
 
-                <MenuItem
-                    name='Friends'
-                    active={activeItem === 'Friends'}
-                    onClick={this.handleItemClick}
-                >
-                    <Header as='h4'>Friends</Header>
-                    <p>Check out the garden of your friends!</p>
-                </MenuItem>
-
-                <MenuItem
-                    name='Postbox'
-                    active={activeItem === 'Postbox'}
-                    onClick={this.handleItemClick}
-                >
-                    <Header as='h4'>Postbox</Header>
-                    <p>Check out new updates!</p>
-                </MenuItem>
-            </Menu>
-        )
-    }
+            <MenuItem
+                name='Postbox'
+            >
+                <Header as='h4'>Postbox</Header>
+                <p>Check out new updates!</p>
+            </MenuItem>
+        </Menu>
+    );
 }
+
+export default MenuExampleText;
