@@ -1,13 +1,20 @@
 import React, { useState, useMemo , useCallback} from 'react';
 import {Input, Button} from 'semantic-ui-react';
 import {getUserApi, getAllUserApi} from '../apis/usersApi';
+import {useNavigate} from 'react-router-dom'
 
-function LoginForm({users}) {
+function LoginForm() {
   
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
   const [loginSuccess, setLoginSuccess] = useState(false);
   const info = useMemo(() => {return {username: id, password: password};});
+
+  const navigate = useNavigate();
+ 
+  const navigateToSignUp = () => {
+    navigate("/signup");
+  };
 
   const handleLogin = useCallback((event) => {
     event.preventDefault(); // 기본적인 HTML 동작으로 인해 페이지가 새로고침 되는 것을 방지
@@ -39,7 +46,7 @@ function LoginForm({users}) {
         }}></Input>
         <br/><br/>
         <Button type="submit">Login</Button>
-        <Button type="button">Sign up</Button>
+        <Button type="button" onClick = {navigateToSignUp}>Sign up</Button>
       </form>
       {loginSuccess && <div>환영합니다.</div>}
     </div>
