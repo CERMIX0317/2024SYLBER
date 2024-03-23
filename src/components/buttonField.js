@@ -12,6 +12,7 @@ import {
     Card,
     Icon,
     Image,
+    Button,
 } from 'semantic-ui-react'
 
 const ButtonField = ({seedPos, username}) => {
@@ -108,6 +109,8 @@ const ButtonField = ({seedPos, username}) => {
                     <CardContent>
                         <CardDescription>
                             빈칸을 선택하여 꽃을 심거나 <br/> 꽃을 선택하여 정보를 확인하세요!
+                            <br/><br/>
+                            <Button>씨앗 심기 (1개 보유)</Button>
                         </CardDescription>
                     </CardContent>
                 </Card>
