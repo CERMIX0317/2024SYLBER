@@ -23,13 +23,13 @@ const FlowerList = ({flowers, onComplete, onRemove}) => {
                                     if (typeof onComplete === "function") {
                                         onComplete(index);
                                     }
-                                }}>수령
+                                }} color = 'green' size = 'small'>수령
                                 </Button>
                                 <Button className="remove" type="button" onClick={() => {
                                     if (typeof onRemove === "function") {
                                         onRemove(index);
                                     }
-                                }}>제거
+                                }} color = 'red' size = 'small'>제거
                                 </Button>
                             </ListContent>
                             <ListContent>
