@@ -9,38 +9,37 @@ import {
     Image,
     Button,
 } from 'semantic-ui-react'
-
 const FlowerList = ({flowers, onComplete, onRemove}) => {
-
-
     return (
         <div className="FlowerList">
-            <ol>
+            <List divided verticalAlign='middle'>
+
                 {flowers.map((flower, index) => {
-                    return(
-                        <li>
-                            <span className="Header">{flower.message}</span>
-                            <br/>
-                            <span>Sent by <b>  {flower.sender} </b> </span>
-                            <Button type="button" onClick={() => {
-                                if (typeof onComplete === "function") {
-                                    onComplete(index);
-                                }
-                            }}>수령
-                            </Button>
-                            <Button className="remove" type="button" onClick={() => {
-                                if (typeof onRemove === "function") {
-                                    onRemove(index);
-                                }
-                            }}>제거
-                            </Button>
-                            <br/>
-                        </li>
+                    return (
+                        <ListItem>
+                            <ListContent>
+                                <ListHeader as='b' className="Header">{flower.message}</ListHeader>
+                                <ListDescription>Sent by <b>  {flower.sender} </b> </ListDescription>
+                            </ListContent>
+                            <ListContent floated="right">
+                                <Button onClick={() => {
+                                    if (typeof onComplete === "function") {
+                                        onComplete(index);
+                                    }
+                                }}>수령
+                                </Button>
+                                <Button className="remove" type="button" onClick={() => {
+                                    if (typeof onRemove === "function") {
+                                        onRemove(index);
+                                    }
+                                }}>제거
+                                </Button>
+                            </ListContent>
+                        </ListItem>
                     )
                 })}
-            </ol>
+            </List>
         </div>
     );
 }
-
 export default FlowerList;
