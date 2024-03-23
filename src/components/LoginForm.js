@@ -6,14 +6,18 @@ import {useNavigate} from 'react-router-dom'
 function LoginForm() {
   
   const [id, setId] = useState('');
+  const [loginId, setLoginId] = useState('');
   const [password, setPassword] = useState('');
   const [loginSuccess, setLoginSuccess] = useState(false);
-  const info = useMemo(() => {return {username: id, password: password};});
 
   const navigate = useNavigate();
  
   const navigateToSignUp = () => {
     navigate("/signup");
+  };
+
+  const navigateToMain = (username) => {
+    navigate(`/main/${username}`);
   };
 
   const handleLogin = useCallback((event) => {
@@ -29,6 +33,7 @@ function LoginForm() {
       alert('존재하지 않는 유저네임입니다.');
       console.error(err);
     });
+    setLoginId(id);
     setId("");
     setPassword("");
   },[id, password])
@@ -48,7 +53,7 @@ function LoginForm() {
         <Button type="submit">Login</Button>
         <Button type="button" onClick = {navigateToSignUp}>Sign up</Button>
       </form>
-      {loginSuccess && <div>환영합니다.</div>}
+      {loginSuccess && navigateToMain(loginId)}
     </div>
   );
 }
