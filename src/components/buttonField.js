@@ -4,7 +4,9 @@ import {
     HYDImg,
     IRISImg,
     TULIPImg,
-    LGBImg
+    LGBImg,
+    LILYImg,
+    MYSImg
   } from './image/images'
 
 import {
@@ -70,7 +72,7 @@ const ButtonField = ({seedPos, username}) => {
                 <div
                     key={index}
                     style={{
-                        font: '20px Century Gothic',
+                        font: '16px Century Gothic',
                         background: button.BGC,
                         position: 'absolute',
                         left: (button.xPos + seedPos.seedX - 250),
@@ -84,15 +86,14 @@ const ButtonField = ({seedPos, username}) => {
                         setShowFlowerInfo((showFlowerInfo) => (showFlowerInfo === index ? -1 : index));
                     }}
                 >
-                    {index + 1}
-                    <img src = {CHBImg}  style = {{ width: 100 }}/>
+                    <img src = {MYSImg}  style = {{ width: 100, alignContent: 'center'}}/>
                 </div>
             ))}
             {showFlowerInfo >= 0 && (
                 <Card style = {{ width: 250, left: seedPos.seedX -  window.innerWidth/3, top: seedPos.seedY - 250}}>
-                    <Image src={CHBImg} wrapped ui={false} />
+                    <Image src={MYSImg} wrapped ui={false} />
                     <CardContent>
-                        <CardHeader>{username}님의 HYD</CardHeader>
+                        <CardHeader>{username}님의 물망초</CardHeader>
                         <CardMeta>
                             <span className='date'>YJB가 2024.03.17에 선물했어요!</span>
                         </CardMeta>
