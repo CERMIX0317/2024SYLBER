@@ -9,15 +9,6 @@ import {
     MYSImg
   } from './image/images'
 import {getUserApi, getAllUserApi} from '../apis/usersApi';
-
-const images = [CHBImg,
-    HYDImg,
-    IRISImg,
-    TULIPImg,
-    LGBImg,
-    LILYImg,
-    MYSImg];
-
 import {
     CardMeta,
     CardHeader,
@@ -29,22 +20,49 @@ import {
     Button,
 } from 'semantic-ui-react'
 
+const images = [CHBImg,
+    HYDImg,
+    IRISImg,
+    TULIPImg,
+    LGBImg,
+    LILYImg,
+    MYSImg];
+const names = ['벛꽃',
+        '수국',
+        '붓꽃',
+        '튤립',
+        '무지개꽃',
+        '연꽃',
+        '물망초'];
+
+
+
 const ButtonField = ({seedPos, username}) => {
     // 버튼들의 위치를 저장하는 상태
     const [flowers, setFlowers] = useState([]);
-    const [seeds, setSeeds] = useState([]);
+    const [seeds, setSeeds] = useState(0);
+    const [type, setType] = useState(0);
+    const L = useMemo(() => flowers.length, [flowers]);
 
-    getUserApi(username).then((res) => {
-        setFlowers(res.flowers);
-        setSeeds(res.seeds);
-      }).catch((err) => {
-        alert('존재하지 않는 유저네임입니다.');
-        console.error(err);
-    });
+    console.log(L);
+
+    useMemo(() => {
+        getUserApi(username).then((res) => {
+            setFlowers(res.flowers);
+            setSeeds(res.seeds);
+          }).catch((err) => {
+            alert('존재하지 않는 유저네임입니다.');
+            console.error(err);
+        });
+    }, []);
+
+    console.log(flowers);
+    
 
     
 
     const [showFlowerInfo, setShowFlowerInfo] = useState(-1);
+    const [showFlowerType, setShowFlowerType] = useState(0);
 
     const componentToHex = (c) => {
         var hex = c.toString(16);
@@ -89,10 +107,14 @@ const ButtonField = ({seedPos, username}) => {
 
     return (
         <div className="buttonField">
-            {buttons.map((button, index) => (
-                <div
-                    key={index}
-                    style={{
+            {buttons.map((button, index) => 
+                {
+                    if (index < L){
+                        //setType(flowers[index].type[0]);
+                        console.log(flowers[index].type);
+                    }
+                    return <div key={index}
+                        style={{
                         font: '16px Century Gothic',
                         background: button.BGC,
                         position: 'absolute',
@@ -104,28 +126,34 @@ const ButtonField = ({seedPos, username}) => {
                     }}
                     onClick={() => {
                         console.log({index});
-                        setShowFlowerInfo((showFlowerInfo) => (showFlowerInfo === index ? -1 : index));
-                    }}
-                >
-                    <img src = {MYSImg}  style = {{ width: 100, alignContent: 'center'}}/>
-                </div>
-            ))}
+                        if(index < L){
+                            setShowFlowerInfo((showFlowerInfo) => ((showFlowerInfo === index ? -1 : index)));
+                            setShowFlowerType(flowers[index].type);
+                        }
+                        else{
+                            setShowFlowerInfo(() => (-1));
+                        }
+                    }}>
+                        {(index < L) && <img src = {images[flowers[index].type]}  style = {{ width: 100, alignContent: 'center'}}/>}
+                    </div>;
+                }
+            )}
             {showFlowerInfo >= 0 && (
                 <Card style = {{ width: 250, left: seedPos.seedX -  window.innerWidth/3, top: seedPos.seedY - 250}}>
-                    <Image src={MYSImg} wrapped ui={false} />
+                    <Image src={images[showFlowerType]} wrapped ui={false} />
                     <CardContent>
-                        <CardHeader>{username}님의 물망초</CardHeader>
+                        <CardHeader>{username}님의 {names[showFlowerType]}</CardHeader>
                         <CardMeta>
                             <span className='date'>YJB가 2024.03.17에 선물했어요!</span>
                         </CardMeta>
                         <CardDescription>
-                            심정벅동엉덩준상
+                            힘내요!
                         </CardDescription>
                     </CardContent>
                     <CardContent extra>
                         <a>
                             <Icon name='percent' />
-                            성장 진척도: 98%
+                            성장 진척도: 100%
                         </a>
                     </CardContent>
                 </Card>
@@ -135,7 +163,7 @@ const ButtonField = ({seedPos, username}) => {
                         <CardDescription>
                             빈칸을 선택하여 꽃을 심거나 <br/> 꽃을 선택하여 정보를 확인하세요!
                             <br/><br/>
-                            <Button>씨앗 심기 (1개 보유)</Button>
+                            <Button>씨앗 심기 (∞개 보유)</Button>
                         </CardDescription>
                     </CardContent>
                 </Card>

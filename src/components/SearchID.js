@@ -18,9 +18,11 @@ const backurl = 'http://3.92.72.2:3000';
 function SearchID({username}) {
   const [users, setUsers] = useState([]);
 
-  getAllUserApi().then((res) => {
-    setUsers([...res]);
-  })  
+  useMemo(() => {
+    getAllUserApi().then((res) => {
+      setUsers([...res]);
+    });
+  }, []);
 
   const [searchTerm, setSearchTerm] = useState('');
   

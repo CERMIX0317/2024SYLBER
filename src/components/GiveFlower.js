@@ -12,17 +12,11 @@ import {Input,
   Menu,
   Button} from 'semantic-ui-react';
 import axios from 'axios';
-import {getUserApi, getAllUserApi, postUserApi} from '../apis/usersApi';
 
+const users = [{username: 'sjb', password: '1234'}, {username: 'yjb', password: '4321'}, ];
 const backurl = 'http://3.92.72.2:3000';
 
 function GiveFlower({myuser}) {
-  const [users, setUsers] = useState([]);
-
-  getAllUserApi().then((res) => {
-    setUsers([...res]);
-  })  
-
   const [searchTerm, setSearchTerm] = useState('');
   const [myFlowerList, setFlowerList] = useState([]);
   
@@ -37,7 +31,8 @@ function GiveFlower({myuser}) {
     try{
         const data = await axios.get(`${backurl}/user/${myuser}`);
         console.log(data);
-        setFlowerList(data.flowers.map((a)=>a.type));
+        console.log(data.data.flowers);
+        setFlowerList(data.data.flowers);
     }catch(error){
         throw error;
     }
@@ -91,7 +86,7 @@ function GiveFlower({myuser}) {
           {filteredListItems.map((item, index) => (
             <Menu.Item key={index}>
                 {item.username}
-                <Button onClick={()=>giveflower(item.username, selectedItem)}>꽃 주기</Button>
+                <Button onClick={()=>{giveflower(item.username, selectedItem);setVisible2(!visible2)}}>꽃 주기</Button>
             </Menu.Item>
             ))}
         </Sidebar>
@@ -100,7 +95,7 @@ function GiveFlower({myuser}) {
   
     return (
       <div class = "giveflower">
-        <Button onClick={() => {setVisible1(!visible1); getFlowerList();}}>꽃 목록!</Button>
+        <Button onClick={() => {setVisible1(!visible1); getFlowerList()}}>꽃 목록!</Button>
         <Sidebar
           as={Menu}
           animation='overlay'
@@ -110,10 +105,9 @@ function GiveFlower({myuser}) {
           visible={visible1}
           width='wide'
         >
-          {/* 처음 사이드바에서는 리스트 목록을 표시합니다. */}
-          {myFlowerList.map((item, index) => (
-            <Menu.Item key={index} onClick={() => handleListItemClick(item)}>
-              {item}
+        {myFlowerList.map((item, index) => (
+            <Menu.Item key={index} onClick={() => handleListItemClick(item.type)}>
+              {item.type}
             </Menu.Item>
           ))}
         </Sidebar>
