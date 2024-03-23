@@ -1,6 +1,7 @@
 import React, { useState, useMemo , useCallback} from 'react';
 import {Input, Button, FormCheckbox} from 'semantic-ui-react';
 import {getUserApi, getAllUserApi, postUserApi} from '../apis/usersApi';
+import {useNavigate} from 'react-router-dom'
 
 function SignUpForm() {
 
@@ -8,13 +9,12 @@ function SignUpForm() {
   const [password, setPassword] = useState('');
   const [signUpSuccess, setSignUpSuccess] = useState(false);
   const [check, setCheck] = useState(false);
-  const info = useMemo(() => {return {username: id, password: password};});
 
-  const checkValidity = () => {
-    // 비밀번호 유효성 검사를 위한 정규 표현식
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-    return passwordRegex.test(password);
-  }
+  const navigate = useNavigate();
+ 
+  const navigateToLogin = () => {
+    navigate(-1);
+  };
 
   const handleLogin = useCallback((event) => {
     event.preventDefault(); // 기본적인 HTML 동작으로 인해 페이지가 새로고침 되는 것을 방지
@@ -58,7 +58,7 @@ function SignUpForm() {
         <br/>
         <Button type="submit">Sign up</Button>
       </form>
-      {(signUpSuccess) && (alert('회원가입이 완료되었습니다.'))}
+      {(signUpSuccess) && (navigateToLogin())}
     </div>
   );
 }
