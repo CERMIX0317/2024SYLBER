@@ -1,5 +1,5 @@
 import React, { useState, useMemo , useCallback} from 'react';
-import {Input} from 'semantic-ui-react';
+import {Input, Button} from 'semantic-ui-react';
 
 function LoginForm({users}) {
   
@@ -23,13 +23,16 @@ function LoginForm({users}) {
     <div style = {{textAlign: 'center', verticalAlign: 'center',}}>
       <h1> 로그인해주세요.</h1>
       <form onSubmit={handleLogin}>
-        <input value = {id} placeholder = 'id' onChange = {(event) => {
+        <Input value = {id} placeholder = 'id' onChange = {(event) => {
           setId(event.target.value);
-        }}></input>
+        }}></Input>
+        <br/><br/>
         <Input value = {password} placeholder = 'password' onChange = {(event) => {
           setPassword(event.target.value);
         }}></Input>
-        <button type="submit">Login</button>
+        <br/><br/>
+        <Button type="submit">Login</Button>
+        <Button type="button">Sign up</Button>
       </form>
       {loginSuccess && <div>환영합니다.</div>}
     </div>
