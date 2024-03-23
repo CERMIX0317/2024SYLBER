@@ -1,0 +1,9 @@
+.FlowerList {
+    display: block;
+    position: relative;
+    min-height: 120px;
+    margin-bottom: 8px;
+    background-color: #ffffff;
+    padding: 16px;
+    border-radius: 16px;
+}
