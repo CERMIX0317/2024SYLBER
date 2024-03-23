@@ -1,0 +1,22 @@
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100dvh;
+  }
+  .Search-ID{
+    padding: 3rem;
+    border-radius: 1rem;
+    background: coral;
+    align-self: center; 
+  }
+  
+  .Search-results{
+    flex: 1;
+  }
+  
+  ul{
+    list-style-type: square;
+    line-height: 1.8;
+    padding-inline-start: 1.5em;
+  }
